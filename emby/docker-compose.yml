@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  emby:
+    image: emby/embyserver
+    container_name: emby
+    ports:
+      - "8096:8096"
+      - "8920:8920"
+    volumes:
+      - /root/emby/config:/config
+      - /root/emby/media:/media
+      - /root/emby/transcode:/transcode
+    environment:
+      - UID=1000
+      - GID=1000
+      - GIDLIST=1000
+    restart: unless-stopped
